@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Blog</title>
+  <link rel="stylesheet" href="../style/style.css" />
+  <link rel="stylesheet" href="../style/createBlog.css" />
+</head>
+
+<body>
+  <!--Nav Bar-->
+  <header>
+    <nav>
+      <a href="../index.html" class="logo-link">
+        <h3 class="logo" title="Write Your Thoughts">WYT</h3>
+      </a>
+
+      <a href="./views/createBlog.html" class="create_blog_btn btn">
+        Create Blog
+      </a>
+    </nav>
+  </header>
+  <!-- MAIN SECTION-->
+  <main class="create_blog_container">
+
+    <h2 class="page_title">CREATE BLOG</h2>
+
+    <input type="text" id="blogTitle" placeholder="Enter title" class="input_field" />
+
+    <textarea id="blogContent" class="textarea_field" placeholder="Click to add text"></textarea>
+
+    <div class="action_buttons">
+      <button class="create_btn btn" id="openModalBtn">Create</button>
+      <button class="cancel_btn btn">Cancel</button>
+    </div>
+
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal_overlay" id="modal">
+    <div class="modal_box">
+      <p class="modal_text">Please confirm to publish</p>
+      <div class="modal_actions">
+        <button class="publish_btn btn" id="publishBtn">Publish</button>
+        <button class="cancel_btn btn" id="closeModalBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!-- JS For Blog Creation-->
+  <script src="../src/createBlog.js"></script>
+</body>
+
+</html>

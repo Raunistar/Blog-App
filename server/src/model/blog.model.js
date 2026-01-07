@@ -1,18 +1,26 @@
 import crypto from "crypto";
-import { TIMEOUT } from "dns";
 
 export default class Blog {
-  constructor(title, content) {
+  constructor(title, content, author) {
     this.id = crypto.randomUUID();
     this.title = title;
     this.content = content;
-    this.createdAt = new Date(); // store Date object
+    this.author = author;
+    this.createdAt = new Date();
     this.updatedAt = new Date();
   }
 
   updateBlog(content, title) {
-    this.content = content;
-    this.title = title;
-    this.updatedAt = new Date();
+    if (title && content) {
+      this.content = content;
+      this.title = title;
+      this.updatedAt = new Date();
+    } else if (title) {
+      this.title = title;
+      this.updatedAt = new Date();
+    } else {
+      this.content = content;
+      this.updatedAt = new Date();
+    }
   }
 }

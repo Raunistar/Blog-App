@@ -4,13 +4,13 @@ import {
   getBlogById,
   updateBlogById,
   deleteBlogById,
-} from "../service/blog.service.js";
+} from "../services/blog.service.js";
 
 // CREATE
 export function addBlog(req, res) {
   try {
-    const { title, content } = req.body;
-    const blog = createBlog(title, content);
+    const { title, content, author } = req.body;
+    const blog = createBlog(title, content, author);
     res.status(201).json(blog);
   } catch (err) {
     res.status(400).json({ message: err.message });

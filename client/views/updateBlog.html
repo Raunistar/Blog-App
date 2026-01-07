@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Blog</title>
+  <link rel="stylesheet" href="../style/style.css" />
+  <link rel="stylesheet" href="../style/createBlog.css" />
+</head>
+
+<body>
+  <!--Nav Bar-->
+  <header>
+    <nav>
+      <a href="../index.html" class="logo-link">
+        <h3 class="logo" title="Write Your Thoughts">WYT</h3>
+      </a>
+
+      <a href="./views/createBlog.html" class="create_blog_btn btn">
+        Create Blog
+      </a>
+    </nav>
+  </header>
+  <!-- MAIN SECTION-->
+  <main class="create_blog_container">
+
+    <h2 class="page_title">UPDATE BLOG</h2>
+
+    <input type="text" id="blogTitle" class="input_field" placeholder="Enter title" />
+
+    <textarea id="blogContent" class="textarea_field" placeholder="Update content"></textarea>
+
+    <div class="action_buttons">
+      <button class="create_btn btn" id="openModalBtn">Update</button>
+      <button class="cancel_btn btn" onclick="history.back()">Cancel</button>
+    </div>
+
+  </main>
+
+  <!-- CONFIRM MODAL -->
+  <div class="modal_overlay" id="modal">
+    <div class="modal_box">
+      <p class="modal_text">Please confirm to publish</p>
+      <div class="modal_actions">
+        <button class="publish_btn btn" id="publishBtn">Publish</button>
+        <button class="cancel_btn btn" id="closeModalBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!--JS for updating the blog-->
+  <script src="../src/updateBlog.js"></script>
+</body>
+
+</html>
