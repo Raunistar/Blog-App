@@ -24,7 +24,7 @@ async function loadBlogs() {
     }
 
     blogCardContainer.innerHTML = "";
-
+    //card generation dynamically
     blogs.forEach((blog) => {
       const card = document.createElement("div");
       card.classList.add("card");
@@ -40,7 +40,7 @@ async function loadBlogs() {
           </h3>
 
           <div class="card_actions">
-            <button class="edit_blog_btn"><i class="fa fa-edit"></i></button>
+            <a href="../views/updateBlog.html"><button class="edit_blog_btn"><i class="fa fa-edit"></i></button></a>
             <button class="delete_blog_btn"><i class="fa fa-trash"></i></button>
           </div>
         </div>
@@ -61,15 +61,10 @@ async function loadBlogs() {
         </div>
       `;
 
-      // ✅ Read more button navigation
+      //Read more button navigation
       card.querySelector(".read_more_btn").addEventListener("click", (e) => {
         e.stopPropagation();
-        window.location.href = `./client/views/readBlog.html?id=${blog._id}`;
-      });
-
-      // ✅ Card click navigation
-      card.addEventListener("click", () => {
-        window.location.href = `./client/views/readBlog.html?id=${blog._id}`;
+        window.location.href = `./views/readBlog.html?id=${blog.id}`;
       });
 
       blogCardContainer.appendChild(card);
