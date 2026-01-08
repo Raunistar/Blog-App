@@ -50,7 +50,7 @@ export function deleteBlog(req, res) {
   try {
     const { id } = req.params;
     deleteBlogById(id);
-    res.json({ message: "Blog deleted successfully." });
+    res.status(200).json({ message: "Blog deleted successfully." });
   } catch (err) {
     res.status(404).json({ message: err.message });
   }

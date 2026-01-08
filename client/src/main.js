@@ -24,7 +24,7 @@ async function loadBlogs() {
     }
 
     blogCardContainer.innerHTML = "";
-    //card generation dynamically
+
     blogs.forEach((blog) => {
       const card = document.createElement("div");
       card.classList.add("card");
@@ -40,12 +40,23 @@ async function loadBlogs() {
           </h3>
 
           <div class="card_actions">
-            <a href="../views/updateBlog.html"><button class="edit_blog_btn"><i class="fa fa-edit"></i></button></a>
-            <button class="delete_blog_btn"><i class="fa fa-trash"></i></button>
+            <a href="./views/updateBlog.html?id=${
+              blog.id
+            }" class="edit-blog-btn">
+              <button class="edit_blog_btn">
+                <i class="fa fa-edit"></i>
+              </button>
+            </a>
+
+            <button class="delete_blog_btn" data-id="${blog.id}">
+              <i class="fa fa-trash"></i>
+            </button>
           </div>
         </div>
 
-        <p class="blog_content">${blog.content.slice(0, 120)}...</p>
+        <p class="blog_content">
+          ${blog.content.slice(0, 120)}...
+        </p>
 
         <button class="read_more_btn btn">
           Read more...
@@ -61,11 +72,42 @@ async function loadBlogs() {
         </div>
       `;
 
-      //Read more button navigation
+      /* ---------- READ MORE ---------- */
       card.querySelector(".read_more_btn").addEventListener("click", (e) => {
         e.stopPropagation();
         window.location.href = `./views/readBlog.html?id=${blog.id}`;
       });
+
+      /* ---------- DELETE ---------- */
+      card
+        .querySelector(".delete_blog_btn")
+        .addEventListener("click", async (e) => {
+          e.stopPropagation();
+
+          const blogId = e.currentTarget.dataset.id;
+
+          const confirmDelete = confirm(
+            "Are you sure you want to delete this blog?"
+          );
+          if (!confirmDelete) return;
+
+          try {
+            const res = await fetch(`http://localhost:5050/blog/${blogId}`, {
+              method: "DELETE",
+            });
+
+            if (!res.ok) throw new Error("Delete failed");
+
+            card.remove();
+
+            if (blogCardContainer.children.length === 0) {
+              showEmptyMessage("No blogs available.");
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Failed to delete blog");
+          }
+        });
 
       blogCardContainer.appendChild(card);
     });
