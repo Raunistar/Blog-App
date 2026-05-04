@@ -18,8 +18,8 @@ export function addBlog(req, res) {
 }
 
 // READ ALL
-export function readBlog(req, res) {
-  res.status(200).json(getAllBlogs());
+export function readBlog(req, res){
+    res.status(200).json(getAllBlogs());
 }
 
 // READ ONE

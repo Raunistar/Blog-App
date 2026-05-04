@@ -24,7 +24,7 @@ nav {
   max-height: 50px;
   justify-content: space-between;
   padding: 6px 18px;
-  background-color: rgba(18, 19, 19, 0.9);
+  background-color: rgba(18, 19, 19, 0.4);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
